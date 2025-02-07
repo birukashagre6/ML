@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
 import numpy as np
@@ -8,6 +9,15 @@ model = joblib.load("student_performance_model.pkl")
 
 # Initialize FastAPI app
 app = FastAPI()
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Define request body structure (without failures)
 class StudentData(BaseModel):
@@ -27,3 +37,6 @@ def predict(student: StudentData):
     
     # Return the prediction result (final grade prediction)
     return {"prediction": float(prediction[0])}  # Ensure JSON compatibility
+
+# To run this application, use:
+# uvicorn api:app --reload
