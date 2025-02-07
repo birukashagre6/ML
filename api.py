@@ -9,10 +9,9 @@ model = joblib.load("student_performance_model.pkl")
 # Initialize FastAPI app
 app = FastAPI()
 
-# Define request body structure
+# Define request body structure (without failures)
 class StudentData(BaseModel):
     studytime: float
-    failures: int
     absences: float
     G1: float
     G2: float
@@ -20,11 +19,11 @@ class StudentData(BaseModel):
 # Define prediction endpoint
 @app.post("/predict")
 def predict(student: StudentData):
-    # Extract features from the request data
-    features = np.array([[student.studytime, student.failures, student.absences, student.G1, student.G2]])
+    # Extract features from the request data (without failures)
+    features = np.array([[student.studytime, student.absences, student.G1, student.G2]])
     
     # Make prediction using the model
     prediction = model.predict(features)
     
-    # Return the prediction result(final grade prediction)
-    return {"prediction": prediction[0]}
+    # Return the prediction result (final grade prediction)
+    return {"prediction": float(prediction[0])}  # Ensure JSON compatibility
