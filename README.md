@@ -20,7 +20,8 @@ This project aims to predict student performance based on various factors such a
 
 ## API Endpoint
 
-- **POST /predict**
+- **POST /predict :**
+  `https://ml-sk2t.onrender.com/predict`
 - **Example Request:**
   ```json
   {
@@ -41,7 +42,8 @@ This project aims to predict student performance based on various factors such a
 
 This model is deployed on Render.
 
-- **🔗 Live API Link:** [https://ml-sk2t.onrender.com/predict](https://ml-sk2t.onrender.com/predict)
+- **🔗 Live API Link:** [https://ml-sk2t.onrender.com/docs](https://ml-sk2t.onrender.com/docs)
+- **🔗 React-based web app:** [https://machine-learning-roan.vercel.app/](https://machine-learning-roan.vercel.app/)
 
 ## 🎯 Future Improvements
 
@@ -62,3 +64,7 @@ This model is deployed on Render.
    python api.py
    uvicorn api:app --reload  # For FastAPI
    ```
+
+## Limitation
+
+- Render Cloud Free Tier Delay: On first request, the API may be slow and show a fetching error. Pressing "Predict" 4-5 times resolves this issue. The issue is due to Render’s free plan limitations; upgrading to a paid version would fix it.
