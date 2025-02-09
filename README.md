@@ -151,11 +151,6 @@ The model's performance may vary on new datasets. Regular retraining with update
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
----
 
 ## 🙏 Acknowledgments
 
